@@ -1,0 +1,201 @@
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web|Quicksand" rel="stylesheet" type="text/css">
+
+	<title>About | Francis Rayos del Sol Design</title>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script type="text/javascript" src="scripts/paper-full.js"></script>
+    <script type="text/paperscript" src="scripts/canvas-index.js" canvas="canvas"></script>
+    
+</head>
+
+<style>
+	
+	h1 { 
+		font-family: 'Quicksand', sans-serif; 
+		font-size: 20pt; 
+        font-weight: normal;
+		color: #385170;
+        letter-spacing: 1.5px;
+	}
+	body {
+		background-color: white;
+		/* text-align: center; */
+		font-family: 'Quicksand', sans-serif;
+	}
+
+    html, body {
+        width:  100%;
+        height: 100%;
+        margin: 0;
+    }  
+
+    /* ----------- Toolbar Design ----------- */
+
+    #home a {
+        text-decoration: none;
+        color: #385170;
+    }
+
+    #home a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    #about a {
+        text-decoration: none;
+        color: #385170;
+    }
+
+    #about a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    #projects a {
+        text-decoration: none;
+        color: #385170;
+    }
+
+    #projects a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    #contact a {
+        text-decoration: none;
+        color: #385170;
+    }
+
+    #contact a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    .nav1 {
+        list-style: none;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 22px;
+        font-weight: bolder;
+        color: #385170;
+        position: fixed;
+        z-index:9999;
+        width: 50%;
+        text-align: left;
+        /* margin-left: 5%; */
+    }
+
+    /* ----------- Work Posts Design ----------- */
+
+    @keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    /* Safari, Chrome and Opera > 12.1 */
+    @-webkit-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    #fade p, h1, #me {
+        -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+        -o-animation: fadein 2s; /* Opera < 12.1 */
+        animation: fadein 2s;
+    }
+
+    .container {
+        margin-left: 17%;
+	    margin-right: 5%;
+	    margin-bottom: 5%;
+    }
+    
+    .container p {
+        font-family: 'Titillium Web', sans-serif;
+        position: relative;
+        color: #95989A;
+        font-size: 13pt; 
+    }
+
+    .container a {
+        text-decoration: none;
+        color: #385170;
+        /* cursor: pointer; */
+    }
+
+    .container a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        /* transition-duration: 0.5s; */
+    }
+
+    /* ----------- Image Design ----------- */
+    #logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    #me {
+        margin-top: 6.3%;
+        width: 435px;
+        height: 517px;
+        /* box-shadow: 2px 2px 10px #ededed; */
+	    float: left;
+	    margin-right: 70px;
+        margin-bottom: 10px;
+    }
+
+    
+
+</style>
+
+<body>
+    
+    <ul class="nav1"> 
+        <img src="pictures/frds.png" id="logo"><br><br>
+        <li id="home">  <a href="index.html"> HOME</a></li>
+        <li id="about"> <a href="about.html"> ABOUT</a></li>
+        <li id="projects">  <a href="index.html#bloomberg"> PROJECTS</a></li>
+        <li id="contact">  <a href="contact.html"> CONTACT</a></li>
+    </ul>
+
+    <div id="fade">
+        <div class="container">
+            <img src="pictures/aboutme.jpg" id="me"><br><br>
+            <h1> Pleasure to meet you! </h1>
+            <p> I'm Francis. I've never been much of writer, but nonetheless I've always had a passion for stories. </p>
+            <p> So here's mine. </p>
+            <p> Both of my parents grew up in the Philippines. I, however, was born and bred in New York City
+                in the heart of Spanish Harlem. As I grew older we moved to a more suburban area in Queens, and 
+                that's where I grew to love the quaintness of living in a home rather than a 750-square foot apartment. 
+                But nevertheless there was a degree of rich culture and liveliness that I simply missed. </p>
+            <p> Before I knew it, I packed my bags and move upstate to attend Cornell University
+                in Ithaca, New York. While there, I'm an engineer by day and an avid bubble tea drinker by night. If you've ever 
+                stepped foot on the campus, you've probably seen me in Olin Library or Duffield Hall working on a problem set, 
+                planning out my schedule, or aimlessly reading New York Times Op-Ed articles. And if you don't see me in 
+                one of those places, call the police. </p>
+            <p> For more specific inquiries about the best restaurants in New York City or the prime bubble tea spots
+                in Ithaca, New York, <a href="mailto:fmr32@cornell.edu">I'm your guy</a>.</p>
+            <p> This website was designed and coded by me using HTML, CSS, Javascript, <a href="https://www.humaaans.com/">Humaaans</a>, and Paper.js. The
+                typefaces used on this site include Quicksand and Titillium Web.</p>
+        </div>
+    </div>
+    
+
+    <script src="scripts/portfolio.js"></script>
+</body>
+
+</html>

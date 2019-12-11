@@ -1,0 +1,405 @@
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web|Quicksand" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Bad+Script&display=swap" rel="stylesheet">
+
+	<title>Concrete Canoe | Francis Rayos del Sol Design</title>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script type="text/javascript" src="scripts/paper-full.js"></script>
+    <script type="text/paperscript" src="scripts/canvas-index.js" canvas="canvas"></script>
+    
+</head>
+
+<style>
+	
+	h1 { 
+		font-family: 'Quicksand', sans-serif; 
+		font-size: 30pt; 
+		color: white;
+	}
+	body {
+		background-color: white;
+		/* text-align: center; */
+		font-family: 'Quicksand', sans-serif;
+		color: white;
+	}
+
+    html, body {
+        width:  100%;
+        height: 100%;
+        margin: 0;
+    }  
+
+    /* Scale canvas with resize attribute to full size */
+    canvas[resize] {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+    }
+
+    #name {
+        font-family: 'Bad Script', cursive;
+        font-size: 120%;
+    }
+
+    /* ----------- Toolbar Design ----------- */
+    #logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    #home a {
+        text-decoration: none;
+        color: #385170;
+    }
+
+    #home a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    #about a {
+        text-decoration: none;
+        color: #385170;
+    }
+
+    #about a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    #projects a {
+        text-decoration: none;
+        color: #385170;
+    }
+
+    #projects a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    #contact a {
+        text-decoration: none;
+        color: #385170;
+    }
+
+    #contact a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    /* ----------- Introduction Design ----------- */
+    #intro {
+	    background-image: url("pictures/polaroid.jpg");  
+        width:100%;
+        height: 112vh;
+        background-repeat: no-repeat;
+        background-size: 300px 346px;
+        background-position: 75% 25%;
+        /* font-family: 'Avenir'; */
+        src: url(fonts/Avenir-Medium.otf);
+        position: relative;
+        color: #545454;
+        font-size: 150%; 
+        /* z-index: 0; */
+    }
+
+    .introText {
+        width: 30%;
+        padding-top: 12%;
+        padding-left: 17%;
+        display: block;
+        position: absolute;
+
+    } 
+
+    .introText a {
+        text-decoration: none;
+        color: #ff8b94;
+    }
+
+    .introText a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    .nav1 {
+        list-style: none;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 22px;
+        font-weight: bolder;
+        color: #385170;
+        position: fixed;
+        z-index:9999;
+        width: 50%;
+        text-align: left;
+        /* margin-left: 5%; */
+    }
+    .introText p {
+        position: relative;
+    }
+
+    /* ----------- Hover Effect Design ----------- */
+    .parent {
+        width: 338px;
+        margin-right: 10px;
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .parent-hydration {
+        width: 690px;
+        margin-right: 10px;
+        height: 430px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .parent-sketch {
+        width: 690px;
+        margin-right: 10px;
+        height: 515px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+    
+    .child {
+        width: 100%;
+        height: 100%;
+        background-color: #badce6; /*  fallback color */
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        -o-transition: all .3s;
+        transition: all .3s;
+        display: block;	
+        
+    }
+
+    .parent-hydration:hover .child, .parent-hydration:focus .child {
+        -ms-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -webkit-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        transform: scale(1.15);
+    }
+
+    .child::before {
+        content: "";
+        display: none;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .parent:hover .child:before, .parent:focus .child:before {
+        display: block;
+    }
+
+    .imageWork {
+        /* padding-top: 40px; */
+        padding-left: 20px;
+        /* width: 90%; */
+        /* margin-right: auto; */
+        /* margin-left: auto;  */
+        text-align: center;
+        /* padding-bottom: 5%; */
+    }
+
+    .imageWork img {
+        width: 100%;
+        margin-bottom: 20px;
+        margin-top: 18px;
+    }
+
+    /* ----------- Canoe Page Design ----------- */
+    .container {
+        margin-left: 17%;
+	    margin-right: 5%;
+	    margin-bottom: 5%;
+        
+    }
+
+    .container a {
+        text-decoration: none;
+    }
+
+    .container a p {
+        font-family: 'Titillium Web', sans-serif;
+        color: #95989A;
+        padding-bottom: 30px;
+        line-height: 25px; 
+        margin-top: 5px;
+        font-size: 20px;
+    }
+
+    .cover {
+        width: 100%; 
+        padding-top: 30px;
+        position: relative;
+    }
+
+    .cover img {
+        width: 100%;
+    }
+
+    #gif {
+        box-shadow: 5px 5px 10px #ededed;
+    }
+
+    .postBody {
+        padding-top: 40px;
+        width: 90%;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        padding-bottom: 5%;
+    }
+
+    .postBody h1 {
+        font-family: 'Quicksand';
+        width: 100%;
+        color: #B3EDF2;
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 30px;
+        margin-top: 0px;
+        letter-spacing: 2px;
+    }
+
+    .postBody h2 {
+        font-family: 'Quicksand';	
+        font-size: 25px;
+        color: #B3EDF2;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        letter-spacing: 1px;
+    }
+
+    .postBody p {
+        width: 80%;
+        text-align: justify;
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 18px;
+        color: #95989A;
+        padding-bottom: 5px;
+        line-height: 27px;
+        margin-top: 5px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .postBody img {
+        width: 100%;
+        margin-bottom: 20px;
+        margin-top: 18px;
+    }
+
+    .canoe-moment {
+        background-color: #badce6;
+        background-image: url("pictures/canoe-moment.png"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .canoe-stress {
+        background-color: #badce6;
+        background-image: url("pictures/canoe-stress.png"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .canoe-sketch {
+        background-color: #badce6;
+        background-image: url("pictures/canoe-sketch.png"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .hydration {
+        background-color: #badce6;
+        background-image: url("pictures/hydration.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+
+</style>
+
+<body>
+
+    <ul class="nav1"> 
+        <img src="pictures/frds.png" id="logo"><br><br>
+        <li id="home">  <a href="index.html"> HOME</a></li>
+        <li id="about"> <a href="about.html"> ABOUT</a></li>
+        <li id="projects">  <a href="index.html#bloomberg"> PROJECTS</a></li>
+        <li id="contact">  <a href="contact.html"> CONTACT</a></li>
+    </ul>
+
+    <div id="fade">
+        <div class="container">
+            <div class="cover">
+                <img src="pictures/canoe.gif" id="gif"><br><br>
+            </div>
+
+            <div class="postBody">
+                <h1>CONCRETE CANOE</h1>
+                <p>
+                    Cornell Concrete Canoe is one of Cornell University's unique engineering project teams that give students the opportunity to apply engineering principles outside of the classroom. What does my team do exactly? Well, it's pretty self-explanatory—we build a canoe out of concrete. Didn't think it was possible? I can assure you it is! Here are some of the contributions I've been able to make to this nationally ranked team.
+                </p>
+                <p>
+                    One of the key steps to making a proper concrete canoe is the hardening of the concrete once the concrete is placed onto the mold. As part of the Analysis subteam, one of my responsibilities has been to initialize and program an Arduino automated hydration system each year to maintain and maximize ideal humidity conditions. Optimizing this process from year to year has been crucial to the team’s success in providing the lightest, yet most durable, canoe.
+                </p><br>
+                <div class="imageWork">
+                    <div class="parent-hydration" onclick="" style="box-shadow: 2px 2px 10px #ededed;">
+                        <div class="child hydration"></div>
+                    </div>
+                </div><br><br>
+                <p>
+                    On top of this, in order to ensure that the maximum amount of people can row the canoe without the production of any cracks in the concrete, I utilized MATLAB to construct bending moment, shear force, stress envelope, and moment envelope diagrams that analyzed mix factors, such as tensile strength, safety, etc. Beyond the structural analysis of the canoe, I also conducted a three dimensional visual rendering of the canoe itself.
+                </p><br>
+                <div class="imageWork">
+                    <div class="parent" onclick="" style="box-shadow: 2px 2px 10px #ededed;">
+                        <div class="child canoe-moment"></div>
+                    </div>
+                    <div class="parent" onclick="" style="box-shadow: 2px 2px 10px #ededed;">
+                        <div class="child canoe-stress"></div>
+                    </div><br><br><br>
+                    <div class="parent-sketch" onclick="" style="box-shadow: 2px 2px 10px #ededed;">
+                        <div class="child canoe-sketch"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="scripts/portfolio.js"></script>
+</body>
+
+</html>

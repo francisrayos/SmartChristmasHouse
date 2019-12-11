@@ -1,0 +1,282 @@
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web|Quicksand" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Bad+Script&display=swap" rel="stylesheet">
+
+	<title>Contact | Francis Rayos del Sol Design</title>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script type="text/javascript" src="scripts/paper-full.js"></script>
+    <script type="text/paperscript" src="scripts/canvas-index.js" canvas="canvas"></script>
+    
+</head>
+
+<style>
+	
+	h1 { 
+		font-family: 'Quicksand', sans-serif; 
+		font-size: 20pt; 
+        font-weight: normal;
+		color: #385170;
+        letter-spacing: 1.5px;
+        margin-top: 20%;
+        margin-left: 10%;
+	}
+	body {
+		background-color: white;
+		/* text-align: center; */
+		font-family: 'Quicksand', sans-serif;
+	}
+
+    html, body {
+        width:  100%;
+        height: 100%;
+        margin: 0;
+        scroll-behavior: smooth;
+    }  
+
+    /* Scale canvas with resize attribute to full size */
+    canvas[resize] {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+    }
+
+    #name {
+        font-family: 'Bad Script', cursive;
+        font-size: 120%;
+    }
+
+    /* ----------- Toolbar Design ----------- */
+    #logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    #home a {
+        text-decoration: none;
+        color: #385170;
+    }
+
+    #home a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    #about a {
+        text-decoration: none;
+        color: #385170;
+    }
+
+    #about a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    #projects a {
+        text-decoration: none;
+        color: #385170;
+    }
+
+    #projects a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    #contact a {
+        text-decoration: none;
+        color: #385170;
+    }
+
+    #contact a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    /* ----------- Introduction Design ----------- */
+    #intro {
+	    background-image: url("pictures/polaroid.jpg");  
+        width:100%;
+        height: 112vh;
+        background-repeat: no-repeat;
+        background-size: 300px 346px;
+        background-position: 75% 25%;
+        /* font-family: 'Avenir'; */
+        src: url(fonts/Avenir-Medium.otf);
+        position: relative;
+        color: #545454;
+        font-size: 150%; 
+        /* z-index: 0; */
+    }
+
+    .introText {
+        width: 30%;
+        padding-top: 12%;
+        padding-left: 17%;
+        display: block;
+        position: absolute;
+
+    } 
+
+    .introText a {
+        text-decoration: none;
+        color: #ff8b94;
+    }
+
+    .introText a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    .nav1 {
+        list-style: none;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 22px;
+        font-weight: bolder;
+        color: #385170;
+        position: fixed;
+        z-index:9999;
+        width: 50%;
+        text-align: left;
+        /* margin-left: 5%; */
+    }
+    .introText p {
+        position: relative;
+    }
+
+    /* ----------- Work Posts Design ----------- */
+
+    @keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    /* Safari, Chrome and Opera > 12.1 */
+    @-webkit-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    #fade p, h1, #me {
+        -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+        -o-animation: fadein 2s; /* Opera < 12.1 */
+        animation: fadein 2s;
+    }
+
+    .container {
+        margin-left: 17%;
+	    margin-right: 5%;
+	    margin-bottom: 5%;
+    }
+    
+    .container p {
+        font-family: 'Titillium Web', sans-serif;
+        position: relative;
+        color: #95989A;
+        font-size: 100%; 
+        margin-left: 10%;
+    }
+
+    /* ----------- Image Design ----------- */
+    #me {
+        margin-top: 10%;
+        width: 349px;
+        height: 426px;
+        /* box-shadow: 2px 2px 10px #ededed; */
+	    float: right;
+	    margin-right: 150px;
+    }
+
+    #linkedin  {
+        width: 80px;
+        height: 80px;
+        margin-left: 10%;
+    }
+
+    #gmail  {
+        width: 80px;
+        height: 80px;
+        margin-left: 1%;
+    }
+
+    #github  {
+        width: 80px;
+        height: 80px;
+        margin-left: 1%;
+    }
+
+    #linkedin {
+        transition: filter .2s ease-in-out;
+        -webkit-filter: grayscale(100%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+        filter: grayscale(100%); /* FF 35+ */
+    }
+
+    #linkedin:hover{
+        -webkit-filter: grayscale(0%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+        filter: grayscale(0%); /* FF 35+ */
+    }
+
+    #gmail {
+        transition: filter .2s ease-in-out;
+        -webkit-filter: grayscale(100%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+        filter: grayscale(100%); /* FF 35+ */
+    }
+
+    #gmail:hover{
+        -webkit-filter: grayscale(0%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+        filter: grayscale(0%); /* FF 35+ */
+    }
+
+    #github {
+        transition: filter .2s ease-in-out;
+        -webkit-filter: grayscale(100%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+        filter: grayscale(100%); /* FF 35+ */
+    }
+
+    #github:hover{
+        -webkit-filter: grayscale(0%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+        filter: grayscale(0%); /* FF 35+ */
+    }
+
+</style>
+
+<body>
+    
+    <ul class="nav1"> 
+        <img src="pictures/frds.png" id="logo"><br><br>
+        <li id="home">  <a href="index.html"> HOME</a></li>
+        <li id="about"> <a href="about.html"> ABOUT</a></li>
+        <li id="projects">  <a href="index.html#bloomberg"> PROJECTS</a></li>
+        <li id="contact">  <a href="contact.html"> CONTACT</a></li>
+    </ul>
+
+    <div id="fade">
+        <div class="container">
+            <img src="pictures/humaaanFrancisSitting.png" id="me"><br><br>
+            <h1> Say Hey! </h1>
+            <p> I promise I don't bite. </p>
+            <a href="https://www.linkedin.com/in/francis-rayos-del-sol/"><img src="pictures/linkedin.png" id="linkedin"></a>
+            <a href="mailto:fmr32@cornell.edu"><img src="pictures/gmail.png" id="gmail"></a>
+            <a href="https://www.github.com/francisrayos"><img src="pictures/github.png" id="github"></a>
+        </div>
+    </div>
+
+    <script src="scripts/portfolio.js"></script>
+</body>
+
+</html>
