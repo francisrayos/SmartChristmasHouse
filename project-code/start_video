@@ -1,0 +1,9 @@
+# !/bin/bash
+# script to run multiple processes
+
+# Francis Rayos del Sol
+# fmr32
+
+python video_control.py &
+sudo SDL_VIDEODRIVER=fbcon SDL_FBDEV=/dev/fb1 mplayer -input file=/home/pi/Desktop/final-project/christmas-fifo -vo sdl /home/pi/Desktop/final-project/mariah.mp4
+

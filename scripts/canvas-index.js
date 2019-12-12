@@ -2,7 +2,7 @@
 // http://park12.wakwak.com/~shp/lc/et/en_aics_script.html
 
     project.currentStyle = {
-        fillColor: '#B3EDF2',
+        fillColor: '#FBD9D3',
         /* strokeColor: '#7cc8df',
         strokeWidth: 8 */
     } ;

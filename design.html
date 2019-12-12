@@ -1,0 +1,813 @@
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web|Quicksand" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Bad+Script&display=swap" rel="stylesheet">
+
+	<title> Design & Testing </title>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script type="text/javascript" src="scripts/paper-full.js"></script>
+    <script type="text/paperscript" src="scripts/canvas-index.js" canvas="canvas"></script>
+</head>
+
+<style>
+	
+	h1 { 
+		font-family: 'Quicksand', sans-serif; 
+		font-size: 30pt; 
+		color: white;
+	}
+	body {
+		background-color: white;
+		/* text-align: center; */
+		font-family: 'Quicksand', sans-serif;
+		color: white;
+	}
+
+    html, body {
+        width:  100%;
+        height: 100%;
+        margin: 0;
+    }  
+
+    /* Scale canvas with resize attribute to full size */
+    canvas[resize] {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+    }
+
+    #name {
+        font-family: 'Bad Script', cursive;
+        font-size: 120%;
+    }
+
+    /* ----------- Toolbar Design ----------- */
+    #logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    #home a {
+        text-decoration: none;
+        color: #973333;
+    }
+
+    #home a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    #about a {
+        text-decoration: none;
+        color: #973333;
+    }
+
+    #about a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    #projects a {
+        text-decoration: none;
+        color: #973333;
+    }
+
+    #projects a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    #contact a {
+        text-decoration: none;
+        color: #973333;
+    }
+
+    #contact a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    /* ----------- Introduction Design ----------- */
+    #intro {
+	    background-image: url("pictures/polaroid.jpg");  
+        width:100%;
+        height: 112vh;
+        background-repeat: no-repeat;
+        background-size: 300px 346px;
+        background-position: 75% 25%;
+        /* font-family: 'Avenir'; */
+        src: url(fonts/Avenir-Medium.otf);
+        position: relative;
+        color: #545454;
+        font-size: 150%; 
+        /* z-index: 0; */
+    }
+
+    .introText {
+        width: 30%;
+        padding-top: 12%;
+        padding-left: 17%;
+        display: block;
+        position: absolute;
+
+    } 
+
+    .introText a {
+        text-decoration: none;
+        color: #ff8b94;
+    }
+
+    .introText a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    .nav1 {
+        list-style: none;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 22px;
+        font-weight: bolder;
+        color: #973333;
+        position: fixed;
+        z-index:9999;
+        width: 50%;
+        text-align: left;
+        /* margin-left: 5%; */
+    }
+    .introText p {
+        position: relative;
+    }
+
+    /* ----------- Hover Effect Design ----------- */
+    .parent {
+        width: 290;
+        margin-right: 10px;
+        height: 380px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .parent-sc {
+        width: 400;
+        margin-right: 10px;
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .parent-crypto {
+        width: 350px;
+        margin-right: 10px;
+        height: 107px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .parent-crypto2 {
+        width: 350px;
+        margin-right: 10px;
+        height: 160px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .child {
+        width: 100%;
+        height: 100%;
+        background-color: #badce6; /*  fallback color */
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        -o-transition: all .3s;
+        transition: all .3s;
+        display: block;	
+        
+    }
+
+    .parent:hover .child, .parent:focus .child {
+        -ms-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -webkit-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        transform: scale(1.15);
+    }
+
+    .child::before {
+        content: "";
+        display: none;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .parent:hover .child:before, .parent:focus .child:before {
+        display: block;
+    }
+
+    .imageWork {
+        /* padding-top: 40px; */
+        padding-left: 20px;
+        /* width: 90%; */
+        /* margin-right: auto; */
+        /* margin-left: auto;  */
+        text-align: center;
+        /* padding-bottom: 5%; */
+    }
+
+    .imageWork img {
+        width: 100%;
+        margin-bottom: 20px;
+        margin-top: 18px;
+    }
+
+    /* ----------- Bloomberg Page Design ----------- */
+    .container {
+        margin-left: 17%;
+	    margin-right: 5%;
+	    margin-bottom: 5%;
+        
+    }
+
+    .container a {
+        text-decoration: none;
+        color: darkgreen;
+    }
+
+    .container a p {
+        font-family: 'Titillium Web', sans-serif;
+        color: #95989A;
+        padding-bottom: 30px;
+        line-height: 25px; 
+        margin-top: 5px;
+        font-size: 20px;
+    }
+
+    .cover {
+        width: 100%; 
+        padding-top: 30px;
+        position: relative;
+    }
+
+    .cover img {
+        width: 100%;
+    }
+
+    #gif {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding-bottom: 40%;
+        height: 0;	
+        background-color: #badce6;
+        background-image: url("pictures/project-pictures/design-and-testing.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 20px;	
+        box-shadow: 5px 5px 10px #ededed;
+    }
+
+    .postBody {
+        padding-top: 40px;
+        width: 90%;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        /* padding-bottom: 5%; */
+    }
+
+    .postBody h1 {
+        font-family: 'Quicksand';
+        width: 100%;
+        color: #006400;
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 30px;
+        margin-top: 0px;
+        letter-spacing: 2px;
+    }
+
+    .postBody h2 {
+        font-family: 'Quicksand';	
+        font-size: 25px;
+        color: #973333;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        letter-spacing: 1px;
+    }
+
+    .postBody p {
+        width: 80%;
+        text-align: justify;
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 18px;
+        color: #95989A;
+        padding-bottom: 5px;
+        line-height: 27px;
+        margin-top: 5px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .postBody img {
+        width: 100%;
+        margin-bottom: 20px;
+        margin-top: 18px;
+    }
+
+    /* ----------- Code Snippet Design ----------- */
+
+    pre {
+        overflow: auto;
+    }
+
+    code,
+    pre {
+        font-family: monospace, monospace;
+        font-size: 1em;
+        color: #95989A;
+    }
+
+    code {
+        padding: .2rem .5rem;
+        margin: 0 .2rem;
+        font-size: 90%;
+        white-space: nowrap;
+        background: #F1F1F1;
+        border: 1px solid #E1E1E1;
+        border-radius: 4px; 
+    }
+    pre > code {
+        display: block;
+        padding: 1rem 1.5rem;
+        /* white-space: pre;  */
+    }
+
+    .bloomberg-crypto {
+        background-color: #badce6;
+        background-image: url("pictures/project-pictures/pinout1.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .bloomberg-crypto2 {
+        background-color: #badce6;
+        background-image: url("pictures/project-pictures/pinout2.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .supply-chain1 {
+        background-color: #badce6;
+        background-image: url("pictures/supply-chain1.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .supply-chain2 {
+        background-color: #badce6;
+        background-image: url("pictures/supply-chain2.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .bloomberg-fun {
+        background-color: #badce6;
+        background-image: url("pictures/bloomberg-fun5.JPG"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .bloomberg-fun2 {
+        background-color: #badce6;
+        background-image: url("pictures/bloomberg-fun.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .bloomberg-fun3 {
+        background-color: #badce6;
+        background-image: url("pictures/bloomberg-fun7.JPG"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .hydration {
+        background-color: #badce6;
+        background-image: url("pictures/project-pictures/photo5.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    .parent-hydration {
+        width: 561px;
+        margin-right: 10px;
+        height: 748px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .parent-hydration:hover .child, .parent-hydration:focus .child {
+        -ms-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -webkit-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        transform: scale(1.15);
+    }
+
+    .parent-sketch {
+        width: 576px;
+        margin-right: 10px;
+        height: 768px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .canoe-sketch {
+        background-color: #badce6;
+        background-image: url("pictures/project-pictures/photo1.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .wheel {
+        background-color: #badce6;
+        background-image: url("pictures/project-pictures/photo3.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    .parent-wheel {
+        height: 280px;
+        margin-right: 10px;
+        width: 374px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .parent-wheel:hover .child, .parent-wheel:focus .child {
+        -ms-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -webkit-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        transform: scale(1.15);
+    }
+
+    .parent-speaker {
+        width: 576px;
+        margin-right: 10px;
+        height: 768px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .speaker {
+        background-color: #badce6;
+        background-image: url("pictures/project-pictures/photo2.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .parent-side {
+        width: 690px;
+        margin-right: 10px;
+        height: 515px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .side {
+        background-color: #badce6;
+        background-image: url("pictures/project-pictures/photo7.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .parent-side:hover .child, .parent-side:focus .child {
+        -ms-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -webkit-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        transform: scale(1.15);
+    }
+
+    .parent-speaker:hover .child, .parent-speaker:focus .child {
+        -ms-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -webkit-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        transform: scale(1.15);
+    }
+
+    .parent-sketch:hover .child, .parent-sketch:focus .child {
+        -ms-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -webkit-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        transform: scale(1.15);
+    }
+
+    .parent-front:hover .child, .parent-front:focus .child {
+        -ms-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -webkit-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        transform: scale(1.15);
+    }
+
+    .parent-front {
+        width: 288px;
+        margin-right: 10px;
+        height: 384px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .front {
+        background-color: #badce6;
+        background-image: url("pictures/project-pictures/photo4.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .parent-final:hover .child, .parent-final:focus .child {
+        -ms-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -webkit-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        transform: scale(1.15);
+    }
+
+    .parent-final {
+        width: 288px;
+        margin-right: 10px;
+        height: 384px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .final {
+        background-color: #badce6;
+        background-image: url("pictures/project-pictures/photo6.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .parent-initial1 {
+        width: 350px;
+        margin-right: 10px;
+        height: 160px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .parent-initial2 {
+        width: 350px;
+        margin-right: 10px;
+        height: 160px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .initial1 {
+        background-color: #badce6;
+        background-image: url("pictures/project-pictures/initial1.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .initial2 {
+        background-color: #badce6;
+        background-image: url("pictures/project-pictures/initial2.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .parent-initial1:hover .child, .parent-initial1:focus .child {
+        -ms-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -webkit-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        transform: scale(1.15);
+    }
+
+    .parent-initial2:hover .child, .parent-initial2:focus .child {
+        -ms-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -webkit-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        transform: scale(1.15);
+    }
+
+    .parent-crypto:hover .child, .parent-crypto:focus .child {
+        -ms-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -webkit-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        transform: scale(1.15);
+    }
+
+    .parent-crypto2:hover .child, .parent-crypto2:focus .child {
+        -ms-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -webkit-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        transform: scale(1.15);
+    }
+
+</style>
+
+<body>
+
+    <ul class="nav1"> 
+        <img src="pictures/project-pictures/frds.jpg" id="logo"><br><br>
+        <li id="home">  <a href="index.html"> HOME</a></li>
+        <li id="about"> <a href="introduction.html"> INTRO </a></li>
+        <li id="projects" > <a href="design.html" > DESIGN </a></li>
+        <li id="contact">  <a href="results.html"> RESULTS </a></li>
+        <li id="contact">  <a href="budget.html"> BUDGET </a></li>
+        <li id="contact">  <a href="references.html"> REFERENCES </a></li>
+    </ul>
+
+    <div id="fade">
+        <div class="container">
+            <div class="cover">
+                <img src="pictures/project-pictures/design-and-testing.jpg" id="gif"><br><br>
+            </div>
+
+            <div class="postBody">
+                <h1> DESIGN & TESTING </h1>
+                <h2> DESIGN </h2>
+                <p>
+                    The first part of designing the project involved recreating the password login functionality that 
+                    stems from the typical smartphone onto the Raspberry Pi. It will be using a series of PyGame functions 
+                    to allow screen interactivity with the user. I wanted to make the screen as similar as possible to an actual
+                    passcode simulation, so I had the starting screen display numbers 1-9. From there, the screen contained a 
+                    series of "levels" depending on whether or not the correct password was entered. The implementation of hitting 
+                    buttons on the screen is similar to that of the screen display buttons in Lab 2. For each number pressed, I 
+                    drew a black circle and a green circle, with black circles redrawn each time a number was pressed and a green
+                    circles for each consecutive button press. The user would have up to 5 attempts to get the correct password, 
+                    which fittingly was 1-2-2-5. If all attempts were used and the passcode was still incorrect, the program 
+                    would cease. 
+                </p>
+                <p>
+                    Once this first part of the code was complete, I had gone ahead and dealt with building the physical structure 
+                    of the wooden house. To do this, I purchased 12 inch x 12 inch square panels, 0.5 inch x 0.5 inch wooden sticks, 
+                    and wood glue from the Cornell Store. My initial schematic of the final product is shown in the first two pictures. 
+                    The fully crafted structure of the house is displayed in the following picture. As shown, I left a slit in the 
+                    front of the house to implement a door that would be opened and closed.
+                </p>
+                <div class="imageWork">
+                    <div class="parent-initial1" onclick="" style="box-shadow: 2px 2px 10px #ededed;">
+                        <div class="child initial1"></div>
+                    </div>
+                    <div class="parent-initial2" onclick="" style="box-shadow: 2px 2px 10px #ededed;">
+                        <div class="child initial2"></div>
+                    </div><br><br><br>
+                    <div class="parent-hydration" onclick="" style="box-shadow: 2px 2px 10px #ededed;">
+                        <div class="child hydration"></div>
+                    </div>
+                </div><br><br>
+                <p>    
+                    Once that structure had been completed, I connected several different red and green LED lights to the Raspberry 
+                    Pi's GPIO pins through software connections. After conducting my own personal research, I found that there should be 
+                    a maximum of 3 LEDs per GPIO pin in order to avoid shorting the current to each of the pins. I connected the LEDs to 
+                    GPIO pins 5, 6, 13, 16, 19, 20, 21, and 26. Thus, I had 24 LED lights connected to the Pi around the house. I simply 
+                    attached the LED breadboards to the inside roof of the house. The pinout connection diagrams and the actual final result 
+                    of the LED connections are displayed in the following images.
+                </p> 
+                <div class="imageWork">
+                    <div class="parent-crypto" onclick="" style="box-shadow: 2px 2px 10px #ededed;">
+                        <div class="child bloomberg-crypto"></div>
+                    </div><br><br>
+                    <div class="parent-crypto2" onclick="" style="box-shadow: 2px 2px 10px #ededed;">
+                        <div class="child bloomberg-crypto2"></div>
+                    </div><br><br><br>
+                    <div class="parent-sketch" onclick="" style="box-shadow: 2px 2px 10px #ededed;">
+                        <div class="child canoe-sketch"></div>
+                    </div>
+                </div><br><br>
+                <p>
+                    Another part of the project design involved attaching a servo motor inside the house to latch open a door at the front 
+                    of the wooden house. In terms of connecting it to a GPIO pin, I used GPIO pin 3 because the majority of the other pins 
+                    were being used for the LED lights. Due to the fact that this project did not involve any I2C, it was permissible to use 
+                    this specific pin. In order to power the servo itself, I attached a battery pack to the red power wire of the motor and 
+                    connected the other black wire to GND on the Raspberry Pi. Finally, in terms of attaching the servo itself, I used a wheel 
+                    to trigger smooth movement for the door and attached a leftover piece of wood using velcro and rubber bands to keep it 
+                    secure. The schematic of this new servo wheel is shown as follows.
+                </p>
+                <div class="imageWork">
+                    <div class="parent-wheel" onclick="" style="box-shadow: 2px 2px 10px #ededed;">
+                        <div class="child wheel"></div>
+                    </div>
+                </div><br><br>
+                <p>
+                    The final portion of the project involved video playback on the piTFT screen. The user would be able to play music when 
+                    he or she presses the "Done With Lights" button on the screen, bringing him or her to a new screen solely displaying the 
+                    "Play Music" button. Once pressed, the user would hear and see Mariah Carey's "All I Want for Christmas is You" playing. 
+                    The implementation of this video playback is similar to that of the Big Buck Bunny video played in Lab 1. However, this mp4 
+                    had not been configured to fit the piTFT screen, so I had to convert and resize the video display and storage size using 
+                    HandBrake, an open source video converter suggested by Adafruit. The link to this can be found on the 
+                    <a href="references.html">References</a> page.
+                </p>
+                <p>
+                    In order to hear the video playback on the piTFT, I also utilized a speaker provided from lab and put it underneath the 
+                    wooden house to begin playing once the proper button had been pressed. The following image displays how I assembled the 
+                    speaker mechanism.
+                </p>
+                <div class="imageWork">
+                    <div class="parent-speaker" onclick="" style="box-shadow: 2px 2px 10px #ededed;">
+                        <div class="child speaker"></div>
+                    </div>
+                </div><br><br>
+                <p>
+                    Once all of these different parts had been assembled, I had completed the project! The end result is shown through the 
+                    following images. Happy Holidays!
+                </p>
+                <div class="imageWork">
+                    <div class="parent-side" onclick="" style="box-shadow: 2px 2px 10px #ededed;">
+                        <div class="child side"></div>
+                    </div><br><br>
+                    <div class="parent-front" onclick="" style="box-shadow: 2px 2px 10px #ededed;">
+                        <div class="child front"></div>
+                    </div>
+                    <div class="parent-final" onclick="" style="box-shadow: 2px 2px 10px #ededed;">
+                        <div class="child final"></div>
+                    </div>
+                </div>
+                <h2> TESTING </h2>
+                <p>
+                    There were a few issues that came up as I progressed through my project. The first was that I did come across connecting 
+                    LEDs to GPIO pins. Because the breadboards were relatively small and the Raspberry Pi pins were close together, I had some 
+                    physical trouble with wiring. Also, I became aware of the Raspberry Pi not being able to send current to multiple LEDs, so 
+                    I had to ensure that the Pi would not burn out by putting a 1k resistor for each pin. On top of this, I had another issue 
+                    where a PWM signal would not turn off, specifically for the motor. My error here was that I put the call to the PWM signal 
+                    inside a while loop, so I had to input a flag to only run one time. Another issue was that sometimes there were lags with 
+                    screen display, so to fix this, I placed a time.sleep(0.02) so that the while loop would not consistently be running and 
+                    checking for events. Finally, I noticed that the way my Raspberry Pi was positioned on top of the wooden house, the screen 
+                    functionality was upside down. To counteract this, I used pygame.flip for screen blitting to show the screen properly. 
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/portfolio.js"></script>
+</body>
+
+</html>

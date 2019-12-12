@@ -1,0 +1,456 @@
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web|Quicksand" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Bad+Script&display=swap" rel="stylesheet">
+
+	<title> Introduction & Objective </title>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script type="text/javascript" src="scripts/paper-full.js"></script>
+    <script type="text/paperscript" src="scripts/canvas-index.js" canvas="canvas"></script>
+    
+</head>
+
+<style>
+	
+	h1 { 
+		font-family: 'Quicksand', sans-serif; 
+		font-size: 30pt; 
+		color: white;
+	}
+	body {
+		background-color: white;
+		/* text-align: center; */
+		font-family: 'Quicksand', sans-serif;
+		color: white;
+	}
+
+    html, body {
+        width:  100%;
+        height: 100%;
+        margin: 0;
+    }  
+
+    /* Scale canvas with resize attribute to full size */
+    canvas[resize] {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+    }
+
+    #name {
+        font-family: 'Bad Script', cursive;
+        font-size: 120%;
+    }
+
+    /* ----------- Toolbar Design ----------- */
+    #logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    #home a {
+        text-decoration: none;
+        color: #973333;
+    }
+
+    #home a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    #about a {
+        text-decoration: none;
+        color: #973333;
+    }
+
+    #about a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    #projects a {
+        text-decoration: none;
+        color: #973333;
+    }
+
+    #projects a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    #contact a {
+        text-decoration: none;
+        color: #973333;
+    }
+
+    #contact a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    /* ----------- Introduction Design ----------- */
+    #intro {
+	    background-image: url("pictures/polaroid.jpg");  
+        width:100%;
+        height: 112vh;
+        background-repeat: no-repeat;
+        background-size: 300px 346px;
+        background-position: 75% 25%;
+        /* font-family: 'Avenir'; */
+        src: url(fonts/Avenir-Medium.otf);
+        position: relative;
+        color: #545454;
+        font-size: 150%; 
+        /* z-index: 0; */
+    }
+
+    .introText {
+        width: 30%;
+        padding-top: 12%;
+        padding-left: 17%;
+        display: block;
+        position: absolute;
+
+    } 
+
+    .introText a {
+        text-decoration: none;
+        color: #ff8b94;
+    }
+
+    .introText a:hover {
+        text-decoration: none;
+        background-color: #ffefd7;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+    .nav1 {
+        list-style: none;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 22px;
+        font-weight: bolder;
+        color: #973333;
+        position: fixed;
+        z-index:9999;
+        width: 50%;
+        text-align: left;
+        /* margin-left: 5%; */
+    }
+    .introText p {
+        position: relative;
+    }
+
+    /* ----------- Hover Effect Design ----------- */
+    .parent {
+        width: 290;
+        margin-right: 10px;
+        height: 380px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .parent-sc {
+        width: 400;
+        margin-right: 10px;
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .parent-crypto {
+        width: 470;
+        margin-right: 10px;
+        height: 209px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .child {
+        width: 100%;
+        height: 100%;
+        background-color: #badce6; /*  fallback color */
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        -o-transition: all .3s;
+        transition: all .3s;
+        display: block;	
+        
+    }
+
+    .parent:hover .child, .parent:focus .child {
+        -ms-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -webkit-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        transform: scale(1.15);
+    }
+
+    .child::before {
+        content: "";
+        display: none;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .parent:hover .child:before, .parent:focus .child:before {
+        display: block;
+    }
+
+    .imageWork {
+        /* padding-top: 40px; */
+        padding-left: 20px;
+        /* width: 90%; */
+        /* margin-right: auto; */
+        /* margin-left: auto;  */
+        text-align: center;
+        /* padding-bottom: 5%; */
+    }
+
+    .imageWork img {
+        width: 100%;
+        margin-bottom: 20px;
+        margin-top: 18px;
+    }
+
+    /* ----------- Bloomberg Page Design ----------- */
+    .container {
+        margin-left: 17%;
+	    margin-right: 5%;
+	    margin-bottom: 5%;
+        
+    }
+
+    .container a {
+        text-decoration: none;
+        color: #385170;
+    }
+
+    .container a p {
+        font-family: 'Titillium Web', sans-serif;
+        color: #95989A;
+        padding-bottom: 30px;
+        line-height: 25px; 
+        margin-top: 5px;
+        font-size: 20px;
+    }
+
+    .cover {
+        width: 100%; 
+        padding-top: 30px;
+        position: relative;
+    }
+
+    .cover img {
+        width: 100%;
+    }
+
+    #gif {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding-bottom: 40%;
+        height: 0;	
+        background-color: #badce6;
+        background-image: url("pictures/project-pictures/intro.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 20px;	
+        box-shadow: 5px 5px 10px #ededed;
+    }
+
+    .postBody {
+        padding-top: 40px;
+        width: 90%;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        /* padding-bottom: 5%; */
+    }
+
+    .postBody h1 {
+        font-family: 'Quicksand';
+        width: 100%;
+        color: #006400;
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 30px;
+        margin-top: 0px;
+        letter-spacing: 2px;
+    }
+
+    .postBody h2 {
+        font-family: 'Quicksand';	
+        font-size: 25px;
+        color: #973333;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        letter-spacing: 1px;
+    }
+
+    .postBody p {
+        width: 80%;
+        text-align: justify;
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 18px;
+        color: #95989A;
+        padding-bottom: 5px;
+        line-height: 27px;
+        margin-top: 5px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .postBody img {
+        width: 100%;
+        margin-bottom: 20px;
+        margin-top: 18px;
+    }
+
+    /* ----------- Code Snippet Design ----------- */
+
+    pre {
+        overflow: auto;
+    }
+
+    code,
+    pre {
+        font-family: monospace, monospace;
+        font-size: 1em;
+        color: #95989A;
+    }
+
+    code {
+        padding: .2rem .5rem;
+        margin: 0 .2rem;
+        font-size: 90%;
+        white-space: nowrap;
+        background: #F1F1F1;
+        border: 1px solid #E1E1E1;
+        border-radius: 4px; 
+    }
+    pre > code {
+        display: block;
+        padding: 1rem 1.5rem;
+        /* white-space: pre;  */
+    }
+
+    .bloomberg-crypto {
+        background-color: #badce6;
+        background-image: url("pictures/bloomberg-crypto.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .supply-chain1 {
+        background-color: #badce6;
+        background-image: url("pictures/supply-chain1.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .supply-chain2 {
+        background-color: #badce6;
+        background-image: url("pictures/supply-chain2.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .bloomberg-fun {
+        background-color: #badce6;
+        background-image: url("pictures/bloomberg-fun5.JPG"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .bloomberg-fun2 {
+        background-color: #badce6;
+        background-image: url("pictures/bloomberg-fun.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .bloomberg-fun3 {
+        background-color: #badce6;
+        background-image: url("pictures/bloomberg-fun7.JPG"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+
+</style>
+
+<body>
+
+    <ul class="nav1"> 
+        <img src="pictures/project-pictures/frds.jpg" id="logo"><br><br>
+        <li id="home">  <a href="index.html"> HOME</a></li>
+        <li id="about"> <a href="introduction.html"> INTRO </a></li>
+        <li id="projects" > <a href="design.html" > DESIGN </a></li>
+        <li id="contact">  <a href="results.html"> RESULTS </a></li>
+        <li id="contact">  <a href="budget.html"> BUDGET </a></li>
+        <li id="contact">  <a href="references.html"> REFERENCES </a></li>
+    </ul>
+
+    <div id="fade">
+        <div class="container">
+            <div class="cover">
+                <img src="pictures/project-pictures/intro.jpg" id="gif"><br><br>
+            </div>
+
+            <div class="postBody">
+                <h1> INTRODUCTION & OBJECTIVE </h1>
+                <h2> INTRODUCTION </h2>
+                <p>
+                    The Smart Christmas House is a Raspberry Pi embedded system apparatus using PyGame elements, GPIO pins, 
+                    and video playback on the piTFT to simulate different Christmas-themed operations. The initial part of the 
+                    project involved recreating smartphone login functionality on the piTFT screen to "unlock" the house, 
+                    which utilized a servo motor. From there, the user can control different LED light sequences flickering 
+                    around the roof of the house. Once completed, he or she can play Mariah Carey's "All I Want for 
+                    Christmas is You" on the speakers located within the wooden house.
+                </p>
+                <h2> OBJECTIVE </h2>
+                <p>
+                    The purpose of this project was to combine all of the principles taught throughout the ECE 5725 course, 
+                    primarily in labs 1 through 3, and implement an embedded system that showcases all of these Raspberry Pi 
+                    capabilities. I envision that my system would be able to utilize piTFT video playback from Lab 1 to create 
+                    visual and audio effects, PyGame elements from Lab 2 to enable passcode login functionality, and PWM 
+                    signals/GPIO pins to stimulate festive blinking LED lights. 
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/portfolio.js"></script>
+</body>
+
+</html>
