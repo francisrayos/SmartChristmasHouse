@@ -405,6 +405,23 @@
         background-size: cover;
         background-position: center;
     }
+    .parent-team {
+        width: 690px;
+        margin-right: 10px;
+        height: 515px;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .team {
+        background-color: #badce6;
+        background-image: url("pictures/project-pictures/team-photo.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
 
 
 </style>
@@ -445,7 +462,17 @@
                     capabilities. I envision that my system would be able to utilize piTFT video playback from Lab 1 to create 
                     visual and audio effects, PyGame elements from Lab 2 to enable passcode login functionality, and PWM 
                     signals/GPIO pins to stimulate festive blinking LED lights. 
-                </p>
+                </p><br>
+                <h1> FINAL DEMO & TEAM PHOTO </h1><br>
+                <video width="640" height="360" controls>
+                    <source src="pictures/project-pictures/demo.mov">
+                </video><br><br>
+                <div class="imageWork">
+                    <div class="parent-team" onclick="" style="box-shadow: 2px 2px 10px #ededed;">
+                        <div class="child team"></div>
+                    </div><br>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
